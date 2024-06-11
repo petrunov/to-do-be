@@ -4,14 +4,19 @@
 
 ## Pre-requisites:
 
-```bash
-npm i -g typeorm
-```
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
 
 ## Installation
 
 ```bash
 $ npm install
+```
+
+## Running the database migrations
+
+```bash
+$ npm run typeorm -- -d ./db/typeorm.config.ts migration:run
 ```
 
 ## Running the app
