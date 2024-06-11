@@ -1,6 +1,6 @@
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This is a demo application to showcase base web development knowledge with containerization and full-stack development with NestJs and NextJs, showcasing a responsive UI and cloud deployment.
 
 ## Pre-requisites:
 
@@ -51,9 +51,7 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Author - [Vesko Petrunov](mailto:vpetrunov@gmail.com)
 
 ## License
 
