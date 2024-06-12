@@ -3,14 +3,15 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AppConfig, DbConfig } from '../config'; // Assuming AppConfig and DbConfig are correctly defined
+import { AppConfig, DbConfig } from '../config';
+import { TodosModule } from './todos/todos.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       cache: true,
-      load: [AppConfig, DbConfig], // Load configuration files
+      load: [AppConfig, DbConfig],
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -22,11 +23,12 @@ import { AppConfig, DbConfig } from '../config'; // Assuming AppConfig and DbCon
         username: configService.get<string>('MYSQL_USER', 'root'),
         password: configService.get<string>('MYSQL_PASSWORD', ''),
         database: configService.get<string>('MYSQL_DATABASE', 'todo'),
-        entities: [__dirname + '/../**/*.entity{.ts,.js}'], // Adjust based on your entity path
-        synchronize: true, // Set to true in development (sync schema with entities)
-        logging: true, // Enable logging in development
+        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+        synchronize: process.env.NODE_ENV === 'development',
+        logging: process.env.NODE_ENV === 'development',
       }),
     }),
+    TodosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
