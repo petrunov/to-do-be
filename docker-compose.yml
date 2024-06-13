@@ -2,14 +2,16 @@ services:
   mysql:
     image: mysql:8
     environment:
-      MYSQL_DB: todo
-      MYSQL_USER: root
-      MYSQL_PASSWORD:
+      MYSQL_DATABASE: ${MYSQL_DB}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: root
     ports:
       - '3306:3306'
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./docker-mysql-init:/docker-entrypoint-initdb.d # Mount initialization script
+    command: --init-file /docker-entrypoint-initdb.d/init.sql
 
   node:
     build:
@@ -26,7 +28,7 @@ services:
       - mysql
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./docker-mysql-init:/docker-entrypoint-initdb.d
+    command: sh -c "npm i typescript -g && npm i typeorm -g && npm run migration:run && npm run start"
 
 volumes:
   mysql_data:

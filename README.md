@@ -11,12 +11,20 @@ This is a demo application to showcase base web development knowledge with conta
 
 ```bash
 $ npm install
+$ npm run typeorm:migration:run
+$ npm run start
 ```
 
 ## Running the database migrations
 
 ```bash
-$ npm run typeorm -- -d ./db/typeorm.config.ts migration:run
+$ npm run typeorm:migration:run
+```
+
+## Generate additional migrations to reflect changes of DB table structures
+
+```bash
+$ npm run typeorm -- -d ./db/typeorm.config.ts migration:generate ./db/migrations/<MIGRATION_NAME>
 ```
 
 ## Running the app
