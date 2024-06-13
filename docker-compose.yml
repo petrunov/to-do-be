@@ -23,7 +23,7 @@ services:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     ports:
-      - '3000:3000'
+      - '3001:3000'
     depends_on:
       - mysql
     volumes:

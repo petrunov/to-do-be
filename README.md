@@ -9,6 +9,14 @@ This is a demo application to showcase base web development knowledge with conta
 
 ## Installation
 
+Accessible at http://localhost:3001/todos
+
+```bash
+docker-compose up -d --build
+```
+
+OR
+
 ```bash
 $ npm install
 $ npm run typeorm:migration:run
