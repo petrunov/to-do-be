@@ -10,6 +10,7 @@ This is a demo application of a Simple ToDo REST API app to showcase base web de
 ## Installation
 
 Accessible at http://localhost:3001/todos
+OpenAPI Documentation at http://localhost:3001/api
 
 Recommended:
 
@@ -22,9 +23,9 @@ Not recommended:
 OR Accessible (normally) at http://localhost:3000/todos
 
 ```bash
-$ npm install
-$ npm run typeorm:migration:run
-$ npm run start
+npm install
+npm run typeorm:migration:run
+npm run start
 ```
 
 Note that in case of not using Docker it is required that you have a MySQL database server running locally. To create the database execute the script at `docker-mysql-init\init.sql`.
