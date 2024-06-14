@@ -31,11 +31,11 @@ Note that in case of not using Docker it is required that you have a MySQL datab
 
 Also the following environment varialbes have to be available:
 
-MYSQL_HOST=mysql
-MYSQL_PORT=3306
-MYSQL_DB=todo
-MYSQL_USER=youruser
-MYSQL_PASSWORD=yourpassword
+- MYSQL_HOST=mysql
+- MYSQL_PORT=3306
+- MYSQL_DB=todo
+- MYSQL_USER=youruser
+- MYSQL_PASSWORD=yourpassword
 
 ## Running the database migrations
 
