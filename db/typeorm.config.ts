@@ -6,6 +6,8 @@ config({ path: '../.env' });
 
 const configService = new ConfigService();
 
+console.log('AAA', configService.get('MYSQL_PASSWORD'));
+
 export default new DataSource({
   type: 'mysql',
   host: configService.get('MYSQL_HOST'),

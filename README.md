@@ -24,7 +24,7 @@ OR Accessible (normally) at http://localhost:3000/todos
 
 ```bash
 npm install
-npm run typeorm:migration:run
+npm run migration:run
 npm run start
 ```
 
