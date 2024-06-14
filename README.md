@@ -23,6 +23,16 @@ $ npm run typeorm:migration:run
 $ npm run start
 ```
 
+Note that in this case it is required that you have a MySQL database server running locally. To create the database execute the script at `docker-mysql-init\init.sql`.
+
+Also the following environment varialbes have to be available:
+
+MYSQL_HOST=mysql
+MYSQL_PORT=3306
+MYSQL_DB=todo
+MYSQL_USER=youruser
+MYSQL_PASSWORD=yourpassword
+
 ## Running the database migrations
 
 Note this is required only when not using docker - otherwise the container is handling it automatically.
