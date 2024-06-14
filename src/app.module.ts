@@ -5,6 +5,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AppConfig, DbConfig } from '../config';
 import { TodosModule } from './todos/todos.module';
+import { parse } from 'pg-connection-string'; // Adjust based on your parsing library
+
+// Retrieve database URL from environment variable
+const dbUrl = process.env.CLEARDB_DATABASE_URL;
+
+// Parse the database URL to extract connection parameters
+const parsedUrl = parse(dbUrl);
 
 @Module({
   imports: [
@@ -18,11 +25,11 @@ import { TodosModule } from './todos/todos.module';
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         type: 'mysql',
-        host: configService.get<string>('MYSQL_HOST'),
-        port: configService.get<number>('MYSQL_PORT'),
-        username: configService.get<string>('MYSQL_USER'),
-        password: configService.get<string>('MYSQL_PASSWORD'),
-        database: configService.get<string>('MYSQL_DB'),
+        host: parsedUrl.host,
+        port: parseInt(parsedUrl.port, 10),
+        username: parsedUrl.user,
+        password: parsedUrl.password,
+        database: parsedUrl.database,
         entities: [__dirname + '/../**/*.entity{.ts,.js}'],
         synchronize: process.env.NODE_ENV === 'development',
         logging: process.env.NODE_ENV === 'development',
