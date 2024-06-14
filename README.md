@@ -11,9 +11,13 @@ This is a demo application of a Simple ToDo REST API app to showcase base web de
 
 Accessible at http://localhost:3001/todos
 
+Recommended:
+
 ```bash
 docker-compose up -d --build
 ```
+
+Not recommended:
 
 OR Accessible (normally) at http://localhost:3000/todos
 
@@ -23,7 +27,7 @@ $ npm run typeorm:migration:run
 $ npm run start
 ```
 
-Note that in this case it is required that you have a MySQL database server running locally. To create the database execute the script at `docker-mysql-init\init.sql`.
+Note that in case of not using Docker it is required that you have a MySQL database server running locally. To create the database execute the script at `docker-mysql-init\init.sql`.
 
 Also the following environment varialbes have to be available:
 
