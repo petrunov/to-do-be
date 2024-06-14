@@ -18,9 +18,13 @@ Recommended:
 docker-compose up -d --build
 ```
 
+OR Accessible (normally) at http://localhost:3000/todos
+
 Not recommended:
 
-OR Accessible (normally) at http://localhost:3000/todos
+First change the mysql host in the .env file from "mysql" to "localhost"
+
+Then:
 
 ```bash
 npm install
