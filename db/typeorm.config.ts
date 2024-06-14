@@ -1,8 +1,10 @@
 import { DataSource } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
 import { config } from 'dotenv';
+import { resolve } from 'path';
 
-config({ path: '../.env' });
+const envPath = resolve(__dirname, '../.env');
+config({ path: envPath });
 
 const configService = new ConfigService();
 
