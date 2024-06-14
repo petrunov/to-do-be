@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json package-lock.json ./
 
 # Install npm dependencies
-RUN npm install
+RUN npm install && npm run migration:run 
 
 # Copy the rest of the application code to the working directory
 COPY . .
