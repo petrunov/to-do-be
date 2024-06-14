@@ -7,16 +7,8 @@ import { AppConfig, DbConfig } from '../config';
 import { TodosModule } from './todos/todos.module';
 import { parse } from 'pg-connection-string';
 
-let parsedUrl = {};
-try {
-  const connectionString = process.env.CLEARDB_DATABASE_URL;
-  if (!connectionString) {
-    throw new Error('DATABASE_URL is not defined or empty.');
-  }
-  parsedUrl = parse(connectionString);
-} catch (error) {
-  console.error('Error parsing PostgreSQL connection string:', error);
-}
+const parsedUrl = parse(process.env.CLEARDB_DATABASE_URL);
+
 @Module({
   imports: [
     ConfigModule.forRoot({
