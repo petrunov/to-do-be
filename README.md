@@ -1,6 +1,6 @@
-## Description
+# Simplet ToDo Back-End REST API
 
-This is a demo application to showcase base web development knowledge with containerization and full-stack development with NestJs and NextJs, showcasing a responsive UI and cloud deployment.
+This is a demo application of a Simple ToDo REST API app to showcase base web development knowledge with containerization and full-stack development with NestJs.
 
 ## Pre-requisites:
 
@@ -15,7 +15,7 @@ Accessible at http://localhost:3001/todos
 docker-compose up -d --build
 ```
 
-OR
+OR Accessible (normally) at http://localhost:3000/todos
 
 ```bash
 $ npm install
@@ -24,6 +24,8 @@ $ npm run start
 ```
 
 ## Running the database migrations
+
+Note this is required only when not using docker - otherwise the container is handling it automatically.
 
 ```bash
 $ npm run typeorm:migration:run
