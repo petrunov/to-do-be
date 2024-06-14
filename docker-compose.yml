@@ -28,7 +28,7 @@ services:
       - mysql
     volumes:
       - mysql_data:/var/lib/mysql
-    command: sh -c "npm i typescript -g && npm i typeorm -g && npm run migration:run && npm run start"
+    command: sh -c "npm run migration:run && npm run start"
 
 volumes:
   mysql_data:
