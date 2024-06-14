@@ -22,7 +22,7 @@ import { TodosModule } from './todos/todos.module';
         port: configService.get<number>('MYSQL_PORT'),
         username: configService.get<string>('MYSQL_USER'),
         password: configService.get<string>('MYSQL_PASSWORD'),
-        database: configService.get<string>('MYSQL_DATABASE'),
+        database: configService.get<string>('MYSQL_DB'),
         entities: [__dirname + '/../**/*.entity{.ts,.js}'],
         synchronize: process.env.NODE_ENV === 'development',
         logging: process.env.NODE_ENV === 'development',
