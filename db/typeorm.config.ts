@@ -4,7 +4,11 @@ import { config } from 'dotenv';
 import { resolve } from 'path';
 import { parse } from 'pg-connection-string';
 
-const parsedUrl = parse(process.env.CLEARDB_DATABASE_URL);
+const url =
+  process.env.CLEARDB_DATABASE_URL ||
+  'mysql://bfdcc24e94f9a2:c4d6c4a0@us-cluster-east-01.k8s.cleardb.net/heroku_902fb620fe4592d?reconnect=true';
+
+const parsedUrl = parse(url);
 
 const envPath = resolve(__dirname, '../.env');
 config({ path: envPath });
