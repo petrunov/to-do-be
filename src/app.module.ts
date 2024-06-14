@@ -7,12 +7,20 @@ import { AppConfig, DbConfig } from '../config';
 import { TodosModule } from './todos/todos.module';
 import { parse } from 'pg-connection-string'; // Adjust based on your parsing library
 
-// Retrieve database URL from environment variable
-const dbUrl = process.env.CLEARDB_DATABASE_URL;
+let parsedUrl = {};
+try {
+  const connectionString = process.env.DATABASE_URL; // Check your exact variable name
+  if (!connectionString) {
+    throw new Error('DATABASE_URL is not defined or empty.');
+  }
 
-// Parse the database URL to extract connection parameters
-const parsedUrl = parse(dbUrl);
+  parsedUrl = parse(connectionString);
 
+  // Use dbConfig for connecting to PostgreSQL
+  // Example: const pool = new Pool(dbConfig);
+} catch (error) {
+  console.error('Error parsing PostgreSQL connection string:', error);
+}
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -23,7 +31,7 @@ const parsedUrl = parse(dbUrl);
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: (configService: ConfigService) => ({
+      useFactory: () => ({
         type: 'mysql',
         host: parsedUrl.host,
         port: parseInt(parsedUrl.port, 10),
