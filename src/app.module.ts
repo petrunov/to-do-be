@@ -5,19 +5,15 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AppConfig, DbConfig } from '../config';
 import { TodosModule } from './todos/todos.module';
-import { parse } from 'pg-connection-string'; // Adjust based on your parsing library
+import { parse } from 'pg-connection-string';
 
 let parsedUrl = {};
 try {
-  const connectionString = process.env.DATABASE_URL; // Check your exact variable name
+  const connectionString = process.env.CLEARDB_DATABASE_URL;
   if (!connectionString) {
     throw new Error('DATABASE_URL is not defined or empty.');
   }
-
   parsedUrl = parse(connectionString);
-
-  // Use dbConfig for connecting to PostgreSQL
-  // Example: const pool = new Pool(dbConfig);
 } catch (error) {
   console.error('Error parsing PostgreSQL connection string:', error);
 }
